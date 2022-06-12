@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Mentor - challenge 01</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+    <div class="bg-gray-200 h-screen" x-data="{nav:false}">
+        <nav class="max-w-[1140px] w-full mx-auto h-[60px] py-12 flex items-center justify-between px-10">
+            <div class="mr-8">
+                <img src="img/logo.svg" alt="logo" >
+            </div>
+            <!-- Menu desktop -->
+            <div class="hidden  lg:w-full lg:flex items-center justify-between ">
+                <ul class="flex items-center">
+                    <li class="relative mr-10 text-black" x-data="{dropdownFeature: false}">
+                        <button class="flex items-center mb-2" x-on:click="dropdownFeature = !dropdownFeature" x-on:click.away="dropdownFeature = false">
+                            Features <img class="ml-2" :src="!dropdownFeature ? 'img/icon-arrow-down.svg': 'img/icon-arrow-up.svg'" alt="icon down">
+                        </button>
+                        <div :class="!dropdownFeature ? 'hidden' : 'lg:absolute right-0 bg-white shadow-md rounded-md w-[170px] py-4 px-6'">
+                            <ul>
+                                <li>
+                                    <a href="#" class="flex items-center mb-2 ">
+                                        <img class="mr-4" src="img/icon-todo.svg" alt="icon todo list">
+                                        <p class="text-sm text-gray-400 font-medium hover:text-gray-700">Todo List</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center mb-2">
+                                        <img class="mr-4" src="img/icon-calendar.svg" alt="icon todo list">
+                                        <p class="text-sm text-gray-400 font-medium hover:text-gray-700">Calendar</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center mb-2">
+                                        <img class="mr-4" src="img/icon-reminders.svg" alt="icon todo list">
+                                        <p class="text-sm text-gray-400 font-medium hover:text-gray-700">Reminders</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center mb-2">
+                                        <img class="mr-4" src="img/icon-planning.svg" alt="icon todo list">
+                                        <p class="text-sm text-gray-400 font-medium hover:text-gray-700">Plenning</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="relative mr-10 text-black" x-data="{dropdownCompany: false}">
+                        <button class="flex items-center" x-on:click="dropdownCompany = !dropdownCompany" x-on:click.away="dropdownCompany = false">
+                            Company <img class="ml-2" :src="!dropdownCompany ? 'img/icon-arrow-down.svg': 'img/icon-arrow-up.svg'" alt="icon down">
+                        </button>
+                        <div :class="!dropdownCompany ? 'hidden' : 'lg:absolute  bg-white shadow-md rounded-md w-[150px] py-4 px-6'">
+                            <ul>
+                                <li>
+                                    <a href="#">
+                                        <p class="text-sm text-gray-400 font-medium hover:text-gray-700 mb-2">History</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="mb-2">
+                                        <p class="text-sm text-gray-400 font-medium hover:text-gray-700 mb-2">Our Team</p>
+                                    </a>
+                                </li>
+                                <li><a href="#" class="mb-2">
+                                        <p class="text-sm text-gray-400 font-medium hover:text-gray-700 mb-2">Blog</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="mr-10 text-gray-400">
+                        <a href="#">
+                            Careeers
+                        </a>
+                    </li>
+                    <li class="mr-10 text-black">
+                        <a href="#">
+                            About
+                        </a>
+                    </li>
+                </ul>
+                <div>
+                    <button class="mr-8">
+                        Login
+                    </button>
+                    <button class="border-2 border-black py-2 px-4 rounded-2xl  hover:bg-black hover:text-white transform duration-300">
+                        Register
+                    </button>
+                </div>
+            </div>
+            <!-- Icon mobile -->
+            <div class="lg:hidden" x-on:click="nav = !nav">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </div>
+        </nav>
+        <!-- Icon mobile -->
+        <div class="absolute w-[250px] h-screen bg-white right-0 top-0 z-10" x-bind:class="{'hidden': !nav, 'lg:hidden ease-in-out duration-300':nav}" >
+            <img class="py-4 w-6 mx-48 " src="img/icon-close-menu.svg" alt="icon close" x-on:click="nav = !nav">
+            <ul class="px-6 my-12" x-data="{dropdownFeatureMobile: false, dropdownCompanyMobile: false}">
+                <li class="relative mb-4" >
+                    <a href="#" class="flex items-center" x-on:click="dropdownFeatureMobile = !dropdownFeatureMobile" x-on:click.away="dropdownFeatureMobile = false">
+                        Features <img class="ml-3" src="img/icon-arrow-down.svg" alt="icon features mobile">
+                    </a>
+                    <ul :class="!dropdownFeatureMobile ? 'hidden' : 'block px-6 py-4'">
+                        <li>
+                            <a href="#" class="flex items-center mb-2">
+                                <img class="mr-4" src="img/icon-todo.svg" alt="icon todo list">
+                                <p class="text-[16px] text-gray-400 font-bold hover:text-gray-600">Todo List</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center mb-2">
+                                <img class="mr-4" src="img/icon-calendar.svg" alt="icon todo list">
+                                <p class="text-[16px] text-gray-400 font-bold hover:text-gray-600">Calendar</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center mb-2">
+                                <img class="mr-4" src="img/icon-reminders.svg" alt="icon todo list">
+                                <p class="text-[16px] text-gray-400 font-bold hover:text-gray-600">Reminders</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="flex items-center mb-2">
+                                <img class="mr-4" src="img/icon-planning.svg" alt="icon todo list">
+                                <p class="text-[16px] text-gray-400 font-bold hover:text-gray-600">Plenning</p>
+                            </a>
+                        </li>
+                    </ul>
+                    
+                </li>
+                <li class="relative mb-4">
+                    <a href="#" class="flex items-center" x-on:click="dropdownCompanyMobile = !dropdownCompanyMobile" x-on:click.away="dropdownCompanyMobile = false">
+                        Company <img class="ml-3" src="img/icon-arrow-down.svg" alt="icon features mobile">
+                    </a>
+                    <ul :class="!dropdownCompanyMobile ? 'hidden' : 'block px-6 py-4'">
+                        <li>
+                            <a href="#">
+                                <p class="text-[16px] text-gray-400 font-bold hover:text-gray-600 mb-2">History</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="mb-2">
+                                <p class="text-[16px] text-gray-400 font-bold hover:text-gray-600 mb-2">Our Team</p>
+                            </a>
+                        </li>
+                        <li><a href="#" class="mb-2">
+                                <p class="text-[16px] text-gray-400 font-bold hover:text-gray-600 mb-2">Blog</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="mb-4"><a href="#">Careeers</a></li>
+                <li class="mb-4"><a href="#">About</a></li>
+            </ul>
+            <div class="flex flex-col px-6">
+                <button class="mr-8 mb-4">
+                    Login
+                </button>
+                <button class="border-2 border-black py-2 px-4 rounded-2xl  hover:bg-black hover:text-white transform duration-300">
+                    Register
+                </button>
+            </div>
+        </div>
+        <section class="hidden lg:max-w-[1140px] lg:w-full lg:mx-auto lg:flex items-center lg:my-20">
+            <div class="w-full ml-24">
+                <h1 class="text-7xl text-black font-bold mb-12 my-20">
+                    Make <br>remote work
+                </h1>
+                <p class="text-[18px] text-gray-400 mb-12">
+                    Get your team in sync, no matter your location.
+                    <br>Streamline processes, create team rituals, and
+                    <br>watch productivity soar.
+                </p>
+                <button class="outline-none py-3 px-6 border-black border-2 rounded-2xl cursor-pointer  hover:bg-black hover:text-white transform duration-300 mb-32">
+                    Learn more
+                </button>
+                <div class="w-full h-full flex items-end justify-between mr-20">
+                    <img src="img/client-databiz.svg" alt="logo databiz" >
+                    <img src="img/client-audiophile.svg" alt="logo audio phile">
+                    <img src="img/client-meet.svg" alt="logo meet">
+                    <img src="img/client-maker.svg" alt="logo maker">
+                </div>
+            </div>
+            <div class="lg:block lg:w-full lg:px-10">
+                <img src="img/image-hero-desktop.png" alt="img header" >
+            </div>
+        </section>
+        <!-- section mobile -->
+        <section class="block lg:hidden">
+            <div>
+                <div>
+                    <img src="img/image-hero-mobile.png" alt="img header">
+                </div>
+                <div class="py-8 px-4 flex flex-col items-center justify-center">
+                    <h1 class="text-3xl font-bold space-x-6">
+                        Make remote work
+                    </h1>
+                    <p class="py-4 text-gray-600 text-[16px] font-bold text-center">
+                        Get your team in sync, no matter your location.
+                        Streamline processes, create team rituals, and
+                        watch productivity soar.
+                    </p>
+                    <button class="my-8 outline-none py-3 px-6 border-black border-2 rounded-2xl cursor-pointer  hover:bg-black hover:text-white transform duration-300 mb-10">
+                        Learn more
+                    </button>
+                    <div class="w-full flex items-center justify-between">
+                        <img src="img/client-databiz.svg" alt="logo databiz" class="w-20">
+                        <img src="img/client-audiophile.svg" alt="logo audio phile" class="w-16">
+                        <img src="img/client-meet.svg" alt="logo meet" class="w-20">
+                        <img src="img/client-maker.svg" alt="logo maker" class="w-20">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

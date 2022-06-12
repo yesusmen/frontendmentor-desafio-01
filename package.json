@@ -1,0 +1,14 @@
+{
+  "name": "dropdown-navigation",
+  "version": "1.0.0",
+  "description": "Intro section with dropdown navigation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jesus Arauujo",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.1.2"
+  }
+}
